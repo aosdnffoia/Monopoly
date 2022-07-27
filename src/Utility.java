@@ -1,2 +1,2 @@
-public class Utility implements TitleDeed{
+public class Utility extends TitleDeed {
 }

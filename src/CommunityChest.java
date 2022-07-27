@@ -1,2 +1,5 @@
-public class CommunityChest implements Card{
+public class CommunityChest extends Card {
+    public CommunityChest(int id) {
+        super(id);
+    }
 }

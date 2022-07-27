@@ -1,2 +1,2 @@
-public class RailRoad implements TitleDeed{
+public class RailRoad extends TitleDeed {
 }
