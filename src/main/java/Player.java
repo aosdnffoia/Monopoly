@@ -6,6 +6,29 @@ public class Player {
     private int index;
     private int money;
     private boolean inJail;
+    private TitleDeed[] titleDeeds;
+
+    /**
+     * Constructor for Player
+     * @param name Player's name
+     */
+    public Player(String name) {
+        this.name = name;
+        this.index = 0;
+        this.money = 1500;
+        this.inJail = false;
+    }
+
+    public void takeTurn(){
+        //Offer trade
+        //Roll die
+        int dice1 = (int) (Math.random()*6) + 1;
+        int dice2 = (int) (Math.random()*6) + 1;;
+        System.out.println(dice1 + " " + dice2);
+        if(dice1 == dice2){
+            //the user rolls again after the turn
+        }
+    }
 
     /**
      * Player pays a certain amount (for buying property/houses/rent/etc.)
@@ -36,17 +59,6 @@ public class Player {
         //implement
     }
 
-    /**
-     * Constructor for Player
-     * @param name Player's name
-     */
-    public Player(String name) {
-        this.name = name;
-        this.index = 0;
-        this.money = 1500;
-        this.inJail = false;
-    }
-
     public String getName() {
         return name;
     }
@@ -61,5 +73,9 @@ public class Player {
 
     public boolean isInJail() {
         return inJail;
+    }
+
+    public String toString(){
+        return this.name;
     }
 }

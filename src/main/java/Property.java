@@ -3,17 +3,21 @@
  */
 public class Property extends TitleDeed {
     private Color color;
-    private int cost;
     private int nHouses;
     private int nHotel;
+    private int nRailRoads;
+    private int nUtilities;
 
-    public Property(int index, String name, Color color, int cost){
+    public Property(int index, String name, Color color, int price){
         this.index = index;
         this.name = name;
         this.color = color;
-        this.cost = cost;
+        this.price = price;
         this.nHouses = 0;
         this.nHotel = 0;
+        this.mortgageAmount = price/2;
+        this.nRailRoads = 0;
+        this.nUtilities = 0;
     }
 
     /**

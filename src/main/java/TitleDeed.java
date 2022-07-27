@@ -1,10 +1,10 @@
 /**
  * Abstract class for TitleDeeds that can be owned by a Player, extends Tile.
  */
-public abstract class TitleDeed extends Tile {
-    private int price;
+public class TitleDeed extends Tile {
+    protected int price;
     private int rent;
-    private int mortgageAmount;
+    protected int mortgageAmount;
     private Player owner = null;
     private boolean mortgaged = false;
 
