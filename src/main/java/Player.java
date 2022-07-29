@@ -6,6 +6,7 @@ public class Player {
     private int index;
     private int money;
     private boolean inJail;
+    private boolean getOutOfJailFreeCard;
     private int turnsInJail;
     private TitleDeed[] titleDeeds;
 
@@ -18,10 +19,11 @@ public class Player {
         this.index = 0;
         this.money = 1500;
         this.inJail = false;
+        getOutOfJailFreeCard = false;
     }
 
     public void takeTurn(Board board){
-        System.out.println(this.name + "'s Turn **********************************************");
+        System.out.println(this.name + "'s Turn: $" + this.money + " **********************************************");
         //Offer trade
         //Roll die
         int dice1;
@@ -37,8 +39,8 @@ public class Player {
             doubles = false;
             //dice1 = (int) (Math.random()*6) + 1; //implement a roll button
             //dice2 = (int) (Math.random()*6) + 1;
-            dice1 = 1;
-            dice2 = 29;
+            dice1 = 2;
+            dice2 = 0;
             System.out.println("Rolling... " + dice1 + " " + dice2);
 
             if(dice1 == dice2){
@@ -49,7 +51,7 @@ public class Player {
 
                 if(nDoubles == 3){
                     System.out.println("STRAIGHT TO JAIL");
-                    board.tiles[30].doAction(this);
+                    board.tiles[30].doAction(this, board);
                     break;
                 }
             }
@@ -57,7 +59,7 @@ public class Player {
             if(!this.inJail){
                 System.out.println("NOT IN JAIL");
                 this.move(dice1 + dice2, board);
-                board.tiles[index].doAction(this);
+                board.tiles[index].doAction(this, board);
             }else{
                 System.out.println("IN JAIL!");
             }
@@ -95,7 +97,7 @@ public class Player {
         if(index + nTiles >= 40){
             this.money += 200; //earn 200 for passing GO
         }
-        index = (index + nTiles) % 40;
+        index = (index + nTiles + 40) % 40; //add 40 before mod to take care of case where player draws a card to move spaces backwards when at low index
         System.out.println(board.tiles[index]);
     }
 
@@ -109,6 +111,10 @@ public class Player {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public void setGetOutOfJailFreeCard(boolean getOutOfJailFreeCard) {
+        this.getOutOfJailFreeCard = getOutOfJailFreeCard;
     }
 
     public String getName() {
@@ -125,6 +131,10 @@ public class Player {
 
     public boolean isInJail() {
         return inJail;
+    }
+
+    public TitleDeed[] getTitleDeeds() {
+        return titleDeeds;
     }
 
     public String toString(){

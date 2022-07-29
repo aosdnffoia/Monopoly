@@ -20,6 +20,26 @@ public class Property extends TitleDeed {
         this.nUtilities = 0;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public int getnHouses() {
+        return nHouses;
+    }
+
+    public int getnHotel() {
+        return nHotel;
+    }
+
+    public int getnRailRoads() {
+        return nRailRoads;
+    }
+
+    public int getnUtilities() {
+        return nUtilities;
+    }
+
     /**
      * enum to store information about property colors and their each of their total counts/house price/hotel price
      */
