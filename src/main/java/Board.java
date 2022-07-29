@@ -2,7 +2,7 @@
  * Class for the Board. Contains tiles, cards, players.
  */
 public class Board {
-    private Tile[] tiles;
+    protected Tile[] tiles;
     private ChanceCard[] chanceCards;
     private CommunityChest[] communityChestCards;
     private Player[] players;
@@ -58,7 +58,7 @@ public class Board {
         tiles[17] = tileFactory.getTile("CardTile", 17, "Community Chest", null, null);
         tiles[18] = tileFactory.getTile("Property", 18, "Tennessee Avenue", Property.Color.ORANGE, 180);
         tiles[19] = tileFactory.getTile("Property", 19, "New York Avenue", Property.Color.ORANGE, 200);
-        tiles[20] = tileFactory.getTile("FreeParkingTile", 20, "FreeParking", null, null);
+        tiles[20] = tileFactory.getTile("FreeParkingTile", 20, "Free Parking", null, null);
 
         tiles[21] = tileFactory.getTile("Property", 21, "Kentucky Avenue", Property.Color.RED, 220);
         tiles[22] = tileFactory.getTile("CardTile", 22, "Chance", null, null);
@@ -85,10 +85,9 @@ public class Board {
 
     public static void main(String args[]){
         Board board = new Board();
-        for(int i = 0; i<40; i++){
-            //System.out.println(board.tiles[i]);
-            board.players[0].takeTurn();
+        for(int i = 0; i<3; i++){
+            board.players[0].takeTurn(board);
         }
-        board.players[0].takeTurn();
+
     }
 }

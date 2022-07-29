@@ -6,6 +6,7 @@ public class Player {
     private int index;
     private int money;
     private boolean inJail;
+    private int turnsInJail;
     private TitleDeed[] titleDeeds;
 
     /**
@@ -19,15 +20,50 @@ public class Player {
         this.inJail = false;
     }
 
-    public void takeTurn(){
+    public void takeTurn(Board board){
+        System.out.println(this.name + "'s Turn **********************************************");
         //Offer trade
         //Roll die
-        int dice1 = (int) (Math.random()*6) + 1;
-        int dice2 = (int) (Math.random()*6) + 1;;
-        System.out.println(dice1 + " " + dice2);
-        if(dice1 == dice2){
-            //the user rolls again after the turn
-        }
+        int dice1;
+        int dice2;
+        boolean doubles;
+        int nDoubles = 0;
+
+        do{
+            if(this.inJail){
+                //if in jail, give option to pay 50 to get out or use get out of jail free card
+            }
+
+            doubles = false;
+            //dice1 = (int) (Math.random()*6) + 1; //implement a roll button
+            //dice2 = (int) (Math.random()*6) + 1;
+            dice1 = 1;
+            dice2 = 29;
+            System.out.println("Rolling... " + dice1 + " " + dice2);
+
+            if(dice1 == dice2){
+                System.out.println("DOUBLES!!!");
+                doubles = true;
+                nDoubles++;
+                this.inJail = !this.inJail;
+
+                if(nDoubles == 3){
+                    System.out.println("STRAIGHT TO JAIL");
+                    board.tiles[30].doAction(this);
+                    break;
+                }
+            }
+
+            if(!this.inJail){
+                System.out.println("NOT IN JAIL");
+                this.move(dice1 + dice2, board);
+                board.tiles[index].doAction(this);
+            }else{
+                System.out.println("IN JAIL!");
+            }
+
+        }while(doubles && nDoubles < 3);
+
     }
 
     /**
@@ -56,7 +92,23 @@ public class Player {
      * @param board the board down which the Player moves
      */
     public void move(int nTiles, Board board){
-        //implement
+        if(index + nTiles >= 40){
+            this.money += 200; //earn 200 for passing GO
+        }
+        index = (index + nTiles) % 40;
+        System.out.println(board.tiles[index]);
+    }
+
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
+    }
+
+    public void setTurnsInJail(int turnsInJail) {
+        this.turnsInJail = turnsInJail;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public String getName() {

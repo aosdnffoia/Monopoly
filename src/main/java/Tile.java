@@ -16,6 +16,24 @@ public class Tile {
         this.name = name;
     }
 
+    /**
+     * Action associated with this tile: purchase/pay tax/draw card/go to jail
+     * @param player
+     */
+    public void doAction(Player player){
+        if (this.name.equals("GO")) { //according to official rules, nothing special happens when you land here
+            //do nothing
+        }  else if (this.name.equals("Jail")) {
+
+        } else if (this.name.equals("Free Parking")) { //according to official rules, nothing special happens when you land here
+            //do nothing
+        } else if (this.name.equals("Go to Jail")) {
+            player.setInJail(true);
+            player.setTurnsInJail(0);
+            player.setIndex(10);
+        }
+    }
+
     public String toString(){
         return this.name + ": Index " + this.index;
     }
