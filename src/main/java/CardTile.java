@@ -9,12 +9,15 @@ public class CardTile extends Tile{
 
     @Override
     public void doAction(Player player, Board board) {
+        int cardID = (int) (Math.random()*16) + 1;
         if(this.name == "Chance"){
             Card[] chanceCards = board.getChanceCards();
-            chanceCards[(int) Math.random()*16 + 1].doAction(player, board);
+            System.out.println(chanceCards[cardID]);
+            chanceCards[cardID].doAction(player, board);
         } else {
             Card[] communityChest = board.getCommunityChestCards();
-            communityChest[(int) Math.random()*16 + 1].doAction(player, board);
+            System.out.println(communityChest[cardID]);
+            communityChest[cardID].doAction(player, board);
         }
     }
 }

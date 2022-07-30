@@ -47,6 +47,13 @@ public class Card {
                     } else {
                         player.move(45-player.getIndex(), board);
                     }
+
+                    TitleDeed titleDeed6 = (TitleDeed) board.getTile(player.getIndex());
+                    if(titleDeed6.getOwner() == null){
+                        titleDeed6.doAction(player, board);
+                    }else{
+                        player.payMoney(titleDeed6.getRent() * 2);
+                    }
                     break;
                 case 7: //also throw dice pay 10x number rolled
                     if(player.getIndex() <= 12){
@@ -55,6 +62,15 @@ public class Card {
                         player.move(28-player.getIndex(), board);
                     } else {
                         player.move(52-player.getIndex(), board);
+                    }
+
+                    TitleDeed titleDeed7 = (TitleDeed) board.getTile(player.getIndex());
+                    if(titleDeed7.getOwner() == null){
+                        titleDeed7.doAction(player, board);
+                    }else{
+                        int payAmount7 = (int) ((Math.random()*6) + (Math.random()*6)) * 10;
+                        player.payMoney(payAmount7);
+                        titleDeed7.getOwner().gainMoney(payAmount7);
                     }
                     break;
                 case 8:
@@ -74,10 +90,10 @@ public class Card {
                 case 12:
                     int nHouses = 0;
                     int nHotels = 0;
-                    for(TitleDeed titleDeed: player.getTitleDeeds()){
-                        if (titleDeed instanceof Property){
-                            nHouses += ((Property)titleDeed).getnHouses();
-                            nHotels += ((Property)titleDeed).getnHotel();
+                    for(TitleDeed titleDeed12: player.getTitleDeeds()){
+                        if (titleDeed12 instanceof Property){
+                            nHouses += ((Property)titleDeed12).getnHouses();
+                            nHotels += ((Property)titleDeed12).getnHotel();
                         }
                     }
                     player.payMoney((nHouses * 25) + (nHotels * 100));
@@ -165,5 +181,9 @@ public class Card {
                     break;
             }
         }
+    }
+
+    public String toString(){
+        return this.text;
     }
 }

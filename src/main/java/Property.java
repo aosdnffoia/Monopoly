@@ -20,6 +20,11 @@ public class Property extends TitleDeed {
         this.nUtilities = 0;
     }
 
+    @Override
+    public void doAction(Player player, Board board) {
+        super.doAction(player, board);
+    }
+
     public Color getColor() {
         return color;
     }

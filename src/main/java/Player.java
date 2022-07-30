@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class for a Player
  */
@@ -8,7 +10,7 @@ public class Player {
     private boolean inJail;
     private boolean getOutOfJailFreeCard;
     private int turnsInJail;
-    private TitleDeed[] titleDeeds;
+    private ArrayList<TitleDeed> titleDeeds;
 
     /**
      * Constructor for Player
@@ -18,6 +20,7 @@ public class Player {
         this.name = name;
         this.index = 0;
         this.money = 1500;
+        this.titleDeeds = new ArrayList<>();
         this.inJail = false;
         getOutOfJailFreeCard = false;
     }
@@ -73,12 +76,11 @@ public class Player {
      * @param amount paid by Player
      * @return if the Player was able to pay that amount
      */
-    public boolean payMoney(int amount){
+    public void payMoney(int amount){
         if(money >= amount) {
             this.money -= amount;
-            return true;
         } else {
-            return false;
+            //give player options to sell houses/hotels/mortgage
         }
     }
 
@@ -99,6 +101,13 @@ public class Player {
         }
         index = (index + nTiles + 40) % 40; //add 40 before mod to take care of case where player draws a card to move spaces backwards when at low index
         System.out.println(board.tiles[index]);
+    }
+
+    /**
+     * Add a property to the player's property list
+     */
+    public void addProperty(TitleDeed titleDeed){
+        this.titleDeeds.add(titleDeed);
     }
 
     public void setInJail(boolean inJail) {
@@ -133,7 +142,7 @@ public class Player {
         return inJail;
     }
 
-    public TitleDeed[] getTitleDeeds() {
+    public ArrayList<TitleDeed> getTitleDeeds() {
         return titleDeeds;
     }
 

@@ -128,6 +128,10 @@ public class Board {
         return tiles;
     }
 
+    public Tile getTile(int index){
+        return this.tiles[index];
+    }
+
     public Card[] getChanceCards() {
         return chanceCards;
     }
