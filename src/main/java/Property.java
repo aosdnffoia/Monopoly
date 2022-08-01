@@ -8,6 +8,13 @@ public class Property extends TitleDeed {
     private int nRailRoads;
     private int nUtilities;
 
+    /**
+     * Property constructor
+     * @param index on the board where this property resides
+     * @param name of this property
+     * @param color of this property
+     * @param price of this property
+     */
     public Property(int index, String name, Color color, int price){
         this.index = index;
         this.name = name;

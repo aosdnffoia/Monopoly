@@ -8,12 +8,20 @@ public class TitleDeed extends Tile {
     private Player owner = null;
     private boolean mortgaged = false;
 
+    /**
+     * Method for the action the player can take when landing on this tile, purchase the title deed, add it to the player's property list and set the
+     * player as the owner of this property. Can only be taken if the tile is unowned.
+     * @param player
+     * @param board
+     */
     @Override
     public void doAction(Player player, Board board) {
         //offer to player for sale
-        player.payMoney(this.price);
-        player.addProperty(this);
-        this.setOwner(player);
+        if(this.owner == null) {
+            player.payMoney(this.price);
+            player.addProperty(this);
+            this.setOwner(player);
+        }
     }
 
     /**

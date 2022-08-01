@@ -5,12 +5,23 @@ public class Card {
     private int id;
     private String text;
 
+    /**
+     * Card constructor
+     * @param type 'Chance' or 'Community Chest'
+     * @param id Card ID, between 1 and 16 inclusive
+     * @param text associated with that card, e.g. 'Go Straight to Jail'
+     */
     public Card(String type, int id, String text){
         this.type = type;
         this.id = id;
         this.text = text;
     }
 
+    /**
+     * Method with cases for each unique card type/card id pairs
+     * @param player Player who drew this card
+     * @param board Board upon which this game is being played
+     */
     public void doAction(Player player, Board board){
         if(type == "Chance"){
             switch(id){

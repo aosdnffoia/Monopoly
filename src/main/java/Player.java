@@ -25,10 +25,14 @@ public class Player {
         getOutOfJailFreeCard = false;
     }
 
+    /**
+     * Method for the player to take their turn. They are given an option to trade first, then an option to buy houses/hotels on owned properties, then will roll the die
+     * @param board
+     */
     public void takeTurn(Board board){
         System.out.println(this.name + "'s Turn: $" + this.money + " **********************************************");
-        //Offer trade
-        //Roll die
+        //Option to offer trade, then option to buy houses/hotels
+
         int dice1;
         int dice2;
         boolean doubles;
@@ -80,6 +84,7 @@ public class Player {
         if(money >= amount) {
             this.money -= amount;
         } else {
+
             //give player options to sell houses/hotels/mortgage
         }
     }

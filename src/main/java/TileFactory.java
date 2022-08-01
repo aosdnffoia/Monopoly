@@ -2,6 +2,15 @@
  * TileFactory to assist in creating the 40 tiles needed for a board
  */
 public class TileFactory {
+    /**
+     * Method that the TileFactory uses to return a new tile
+     * @param type of tile
+     * @param index of the tile on the board
+     * @param name of the tile
+     * @param color of the tile
+     * @param price of the tile
+     * @return Tile, null if no tile created (unidentified tile type inputted as parameter)
+     */
     public Tile getTile(String type, int index, String name, Property.Color color, Integer price){
 
         if(type.equals("Property")){
