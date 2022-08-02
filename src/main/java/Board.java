@@ -1,4 +1,3 @@
-import kotlin.Pair;
 /**
  * Class for the Board. Contains tiles, cards, players.
  */

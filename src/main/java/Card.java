@@ -1,5 +1,3 @@
-import kotlin.Pair;
-
 public class Card {
     private String type;
     private int id;
