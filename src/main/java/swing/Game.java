@@ -1,10 +1,10 @@
 package swing;
 
+import swing.dice.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
 
 class Game{
@@ -17,29 +17,28 @@ class Game{
     }
 
     public Game(){
+//        System.out.println(getClass().getResource("").getPath());
     }
 
     private void init(){
 //        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
         frame = new JFrame("Eskeet-poly");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) height, (int) height);
-//        JButton button = new JButton("Press");
-//        frame.getContentPane().add(button); // Adds Button to content pane of frame
 
-//        JPanel panel = new JPanel();
-//        frame.add(panel);
-
+        //Create background label and load image
         background = new JLabel();
+        background.setBounds(0, 0, (int) height, (int) height);
         try {
-            //Local file path not working?
-            Image img = ImageIO.read(new URL("https://p.kindpng.com/picc/s/74-748468_monopolylogo-monopoly-png-transparent-png.png"));
-//            Image img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/main.png")));
+            Image img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/board.jpg")));
             background.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
-        frame.getContentPane().add(background);
+
+        frame.add(new RollDicePanel(), BorderLayout.CENTER);
+//        frame.add(background);
         frame.setVisible(true);
     }
 
