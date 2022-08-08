@@ -28,17 +28,24 @@ class Game{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) height, (int) height);
 
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+
         //Create background label and load image
         background = new JLabel();
-        background.setBounds(0, 0, (int) height, (int) height);
+//        background.setBounds(0, 0, (int) height, (int) height);
         try {
             Image img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/board.jpg")));
             background.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
 
-        frame.add(new RollDicePanel(), BorderLayout.CENTER);
-//        frame.add(background);
+        panel.add(new RollDicePanel(), BorderLayout.CENTER);
+        panel.add(background);
+
+        // Set the window to be visible as the default to be false
+        frame.add(panel);
+        frame.pack();
         frame.setVisible(true);
     }
 
