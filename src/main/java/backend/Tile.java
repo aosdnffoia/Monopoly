@@ -1,8 +1,8 @@
 package backend;
 
 public class Tile {
-    int index;
-    String name;
+    protected int index;
+    protected String name;
 
     /**
      * Default constructor
@@ -38,5 +38,21 @@ public class Tile {
 
     public String toString(){
         return this.name + ": Index " + this.index;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
