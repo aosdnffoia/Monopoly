@@ -1,5 +1,7 @@
+package backend;
+
 /**
- * Class for Card Tiles
+ * Class for backend.Card Tiles
  */
 public class CardTile extends Tile{
     /**

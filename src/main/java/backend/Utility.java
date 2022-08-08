@@ -1,10 +1,12 @@
+package backend;
+
 /**
  * Class for Utilities
  */
 public class Utility extends TitleDeed {
     /**
      * Construcgtor for utility
-     * @param index of the Utility on the board
+     * @param index of the backend.Utility on the board
      * @param name of the utility
      * @param price of the utility
      */

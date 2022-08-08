@@ -92,7 +92,7 @@ public class Die extends JPanel {
         }
     }//end paintComponent
 
-    /** Utility method used by paintComponent(). */
+    /** backend.Utility method used by paintComponent(). */
     //================================================== method drawSpot
     private void drawSpot(Graphics g, int x, int y) {
         g.fillOval(x-SPOT_DIAMETER/2, y-SPOT_DIAMETER/2, SPOT_DIAMETER, SPOT_DIAMETER);

@@ -1,5 +1,7 @@
+package backend;
+
 /**
- * Class for TitleDeeds that can be owned by a Player, extends Tile.
+ * Class for TitleDeeds that can be owned by a backend.Player, extends backend.Tile.
  */
 public class TitleDeed extends Tile {
     protected int price;
@@ -25,13 +27,13 @@ public class TitleDeed extends Tile {
     }
 
     /**
-     * Set a new owner for this TitleDeed
+     * Set a new owner for this backend.TitleDeed
      * @param player the new owner
      */
     public void setOwner(Player player){ this.owner = player; }
 
     /**
-     * Mortgage this TitleDeed.
+     * Mortgage this backend.TitleDeed.
      */
     public void mortgage(){
         if(owner != null) {
@@ -43,7 +45,7 @@ public class TitleDeed extends Tile {
     }
 
     /**
-     * Un-mortgage this TitleDeed.
+     * Un-mortgage this backend.TitleDeed.
      */
     public void unmortgage(){
         if(owner != null) {

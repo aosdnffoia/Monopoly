@@ -1,10 +1,12 @@
+package backend;
+
 /**
  * Class for RailRoads
  */
 public class Railroad extends TitleDeed {
     /**
-     * Railroad Constructor
-     * @param index of this Railroad property on the board
+     * backend.Railroad Constructor
+     * @param index of this backend.Railroad property on the board
      * @param name of this property
      * @param price of this property
      */

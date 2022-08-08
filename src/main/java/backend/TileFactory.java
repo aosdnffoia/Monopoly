@@ -1,27 +1,29 @@
+package backend;
+
 /**
- * TileFactory to assist in creating the 40 tiles needed for a board
+ * backend.TileFactory to assist in creating the 40 tiles needed for a board
  */
 public class TileFactory {
     /**
-     * Method that the TileFactory uses to return a new tile
+     * Method that the backend.TileFactory uses to return a new tile
      * @param type of tile
      * @param index of the tile on the board
      * @param name of the tile
      * @param color of the tile
      * @param price of the tile
-     * @return Tile, null if no tile created (unidentified tile type inputted as parameter)
+     * @return backend.Tile, null if no tile created (unidentified tile type inputted as parameter)
      */
     public Tile getTile(String type, int index, String name, Property.Color color, Integer price){
 
-        if(type.equals("Property")){
+        if(type.equals("backend.Property")){
             return new Property(index, name, color, price);
-        } else if (type.equals("Railroad")) {
+        } else if (type.equals("backend.Railroad")) {
             return new Railroad(index, name, price);
-        } else if (type.equals("Utility")) {
+        } else if (type.equals("backend.Utility")) {
             return new Utility(index, name, price);
-        } else if (type.equals("CardTile")) {
+        } else if (type.equals("backend.CardTile")) {
             return new CardTile(index, name);
-        } else if (type.equals("TaxTile")) {
+        } else if (type.equals("backend.TaxTile")) {
             return new TaxTile(index, name, price);
         } else if (type.equals("StartTile")) { //according to official rules, nothing special happens when you land here
             return new Tile(index, name);

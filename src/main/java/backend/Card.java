@@ -1,12 +1,14 @@
+package backend;
+
 public class Card {
     private String type;
     private int id;
     private String text;
 
     /**
-     * Card constructor
+     * backend.Card constructor
      * @param type 'Chance' or 'Community Chest'
-     * @param id Card ID, between 1 and 16 inclusive
+     * @param id backend.Card ID, between 1 and 16 inclusive
      * @param text associated with that card, e.g. 'Go Straight to Jail'
      */
     public Card(String type, int id, String text){
@@ -17,8 +19,8 @@ public class Card {
 
     /**
      * Method with cases for each unique card type/card id pairs
-     * @param player Player who drew this card
-     * @param board Board upon which this game is being played
+     * @param player backend.Player who drew this card
+     * @param board backend.Board upon which this game is being played
      */
     public void doAction(Player player, Board board){
         if(type == "Chance"){

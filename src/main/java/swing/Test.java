@@ -1,33 +1,28 @@
 package swing;
 
-import backend.*;
-import swing.dice.*;
+import swing.dice.RollDicePanel;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-class Game{
+public class Test {
     private JFrame frame;
     private JPanel panel;
     private JLabel background;
 
     public static void main(String args[]){
-        Game game = new Game();
+        Test game = new Test();
         game.init();
+
     }
 
-    /**
-     * Game GUI default constructor
-     */
-    public Game(){
+    public Test(){
 //        System.out.println(getClass().getResource("").getPath());
     }
 
-    /**
-     * Initial Setup Needed for Gameplay
-     */
     private void init(){
 //        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -48,7 +43,6 @@ class Game{
         } catch (IOException ex) {
         }
 
-        //Add Dice to panel
         panel.add(new RollDicePanel(), BorderLayout.CENTER);
         panel.add(background);
 
@@ -57,5 +51,4 @@ class Game{
         frame.pack();
         frame.setVisible(true);
     }
-
 }

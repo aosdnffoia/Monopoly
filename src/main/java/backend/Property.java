@@ -1,5 +1,7 @@
+package backend;
+
 /**
- * Class for colored properties that can be owned by a player. Extends TitleDeed.
+ * Class for colored properties that can be owned by a player. Extends backend.TitleDeed.
  */
 public class Property extends TitleDeed {
     private Color color;
@@ -9,7 +11,7 @@ public class Property extends TitleDeed {
     private int nUtilities;
 
     /**
-     * Property constructor
+     * backend.Property constructor
      * @param index on the board where this property resides
      * @param name of this property
      * @param color of this property

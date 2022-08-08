@@ -1,7 +1,9 @@
+package backend;
+
 import java.util.ArrayList;
 
 /**
- * Class for a Player
+ * Class for a backend.Player
  */
 public class Player {
     private final String name;
@@ -13,8 +15,8 @@ public class Player {
     private ArrayList<TitleDeed> titleDeeds;
 
     /**
-     * Constructor for Player
-     * @param name Player's name
+     * Constructor for backend.Player
+     * @param name backend.Player's name
      */
     public Player(String name) {
         this.name = name;
@@ -76,9 +78,9 @@ public class Player {
     }
 
     /**
-     * Player pays a certain amount (for buying property/houses/rent/etc.)
-     * @param amount paid by Player
-     * @return if the Player was able to pay that amount
+     * backend.Player pays a certain amount (for buying property/houses/rent/etc.)
+     * @param amount paid by backend.Player
+     * @return if the backend.Player was able to pay that amount
      */
     public void payMoney(int amount){
         if(money >= amount) {
@@ -90,15 +92,15 @@ public class Player {
     }
 
     /**
-     * Player gains a certain amount of money (from rent owed/passing go/etc.)
-     * @param amount gained by Player
+     * backend.Player gains a certain amount of money (from rent owed/passing go/etc.)
+     * @param amount gained by backend.Player
      */
     public void gainMoney(int amount){ this.money += amount; }
 
     /**
-     * Player moved nTiles down the board
-     * @param nTiles the number of tiles the Player moves
-     * @param board the board down which the Player moves
+     * backend.Player moved nTiles down the board
+     * @param nTiles the number of tiles the backend.Player moves
+     * @param board the board down which the backend.Player moves
      */
     public void move(int nTiles, Board board){
         if(index + nTiles >= 40){
