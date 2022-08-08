@@ -4,31 +4,37 @@ package backend;
  * Class for the backend.Board. Contains tiles, cards, players.
  */
 public class Board {
-    protected Tile[] tiles;
-    private Card[] chanceCards;
-    private Card[] communityChestCards;
+    protected static Tile[] tiles;
+    private static Card[] chanceCards;
+    private static Card[] communityChestCards;
     private Player[] players;
+
+    /**
+     * Static Initialization Block in Java is a block that runs before the main() method and is only called once
+     */
+    static{
+        tiles = new Tile[40];
+        chanceCards = new Card[16];
+        communityChestCards = new Card[16];
+        generateBoard();
+        generateCards();
+    }
 
     /**
      * Default constructor for backend.Board
      */
     public Board(){
-        this.tiles = new Tile[40];
-        this.chanceCards = new Card[16];
-        this.communityChestCards = new Card[16];
-        this.generatePlayers();
-        this.generateBoard();
-        this.generateCards();
+        generatePlayers(2);
     }
 
     /**
      * Generate players for the board
      */
-    private void generatePlayers(){
-        int nPlayers = 2; //hard coded as 2 for now, this input will come somewhere from the GUI
+    private void generatePlayers(int numPlayers){
+        int nPlayers = numPlayers; //hard coded as 2 for now, this input will come somewhere from the GUI
         players = new Player[nPlayers];
         for(int i = 0; i < nPlayers; i++){
-            players[i] = new Player("backend.Player " + (i+1)); //also hard coded, name will also come from GUI
+            players[i] = new Player("Player " + (i+1)); //also hard coded, name will also come from GUI
 
         }
     }
@@ -36,7 +42,7 @@ public class Board {
     /**
      * Method to generate a new board
      */
-    private void generateBoard(){
+    private static void generateBoard(){
         TileFactory tileFactory = new TileFactory();
 
         //Factory calls for all 40 tiles
@@ -89,7 +95,7 @@ public class Board {
     /**
      * Method to generate cards
      */
-    private void generateCards(){
+    private static void generateCards(){
         chanceCards[0] = new Card("Chance", 1, "Advance to Boardwalk");
         chanceCards[1] = new Card("Chance", 2, "Advance to Go (Collect $200)");
         chanceCards[2] = new Card("Chance", 3, "Advance to Illinois Avenue. If you pass Go, collect $200");
@@ -125,19 +131,19 @@ public class Board {
         communityChestCards[15] = new Card("Community Chest", 16, "You inherit $100");
     }
 
-    public Tile[] getTiles() {
+    public static Tile[] getTiles() {
         return tiles;
     }
 
-    public Tile getTile(int index){
-        return this.tiles[index];
+    public static Tile getTile(int index){
+        return tiles[index];
     }
 
-    public Card[] getChanceCards() {
+    public static Card[] getChanceCards() {
         return chanceCards;
     }
 
-    public Card[] getCommunityChestCards() {
+    public static Card[] getCommunityChestCards() {
         return communityChestCards;
     }
 
