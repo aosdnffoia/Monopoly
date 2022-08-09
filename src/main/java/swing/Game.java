@@ -9,14 +9,24 @@ import java.io.IOException;
 import java.util.Objects;
 
 class Game{
+    private static final String TITLE = "Eskeet-poly";
     private JFrame frame;
     private JPanel panel;
     private JLabel background;
+    static JButton b;
+
+    // java frame
+    static JFrame f;
+
+    // popup menu
+    static JPopupMenu pm;
+    JLabel l;
 
     public static void main(String args[]){
         Game game = new Game();
         game.init();
         Board board = new Board();
+        Popup.createMainMenu(TITLE);
     }
 
     /**
@@ -33,7 +43,7 @@ class Game{
 //        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-        frame = new JFrame("Eskeet-poly");
+        frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) height, (int) height);
 
