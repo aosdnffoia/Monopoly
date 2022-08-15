@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Monopoly" target="18" />
+      <module name="Monopoly" target="20" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

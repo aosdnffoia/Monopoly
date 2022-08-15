@@ -53,8 +53,8 @@ public class Board {
         tiles[4] = tileFactory.getTile("TaxTile", 4, "Income Tax", null, 200);
         tiles[5] = tileFactory.getTile("Railroad", 5, "Reading backend.Railroad", null, 200);
         tiles[6] = tileFactory.getTile("Property", 6, "Oriental Avenue", Property.Color.LIGHTBLUE, 100);
-        tiles[7] = tileFactory.getTile("bCardTile", 7, "Chance", null, null);
-        tiles[8] = tileFactory.getTile("bProperty", 8, "Vermont Avenue", Property.Color.LIGHTBLUE, 100);
+        tiles[7] = tileFactory.getTile("CardTile", 7, "Chance", null, null);
+        tiles[8] = tileFactory.getTile("Property", 8, "Vermont Avenue", Property.Color.LIGHTBLUE, 100);
         tiles[9] = tileFactory.getTile("Property", 9, "Connecticut Avenue", Property.Color.LIGHTBLUE, 120);
         tiles[10] = tileFactory.getTile("JailTile", 10, "Jail", null, null);
 
@@ -156,6 +156,5 @@ public class Board {
         for(int i = 0; i<3; i++){
             board.players[0].takeTurn(board);
         }
-
     }
 }
