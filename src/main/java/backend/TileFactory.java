@@ -11,12 +11,15 @@ public class TileFactory {
      * @param name of the tile
      * @param color of the tile
      * @param price of the tile
+     * @param rent of the tile
+     * @param houseRent of the tile
+     * @param hotelRent of the tile
      * @return backend.Tile, null if no tile created (unidentified tile type inputted as parameter)
      */
-    public Tile getTile(String type, int index, String name, Property.Color color, Integer price){
+    public Tile getTile(String type, int index, String name, Property.Color color, Integer price, Integer rent, Integer houseRent, Integer hotelRent){
 
         if(type.equals("Property")){
-            return new Property(index, name, color, price);
+            return new Property(index, name, color, price, rent, houseRent, hotelRent);
         } else if (type.equals("Railroad")) {
             return new Railroad(index, name, price);
         } else if (type.equals("Utility")) {

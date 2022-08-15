@@ -9,6 +9,9 @@ public class Property extends TitleDeed {
     private int nHotel;
     private int nRailRoads;
     private int nUtilities;
+    private int rent;
+    private int houseRent;
+    private int hotelRent;
 
     /**
      * backend.Property constructor
@@ -16,12 +19,19 @@ public class Property extends TitleDeed {
      * @param name of this property
      * @param color of this property
      * @param price of this property
+     * @param rent of this property
+     * @param houseRent of this property
+     * @param hotelRent of this property
      */
-    public Property(int index, String name, Color color, int price){
+    public Property(int index, String name, Color color, int price, int rent, int houseRent, int hotelRent){
         this.index = index;
         this.name = name;
         this.color = color;
         this.price = price;
+        this.rent = rent;
+        this.houseRent = houseRent;
+        this.hotelRent = hotelRent;
+
         this.nHouses = 0;
         this.nHotel = 0;
         this.mortgageAmount = price/2;

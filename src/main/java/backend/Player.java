@@ -24,6 +24,7 @@ public class Player {
         this.money = 1500;
         this.titleDeeds = new ArrayList<>();
         this.inJail = false;
+        this.turnsInJail = 0;
         getOutOfJailFreeCard = false;
     }
 
@@ -71,6 +72,12 @@ public class Player {
                 board.tiles[index].doAction(this, board);
             }else{
                 System.out.println("IN JAIL!");
+                if(turnsInJail == 2){ //if player has already been in jail for 2 turns
+                    inJail = false;
+                    turnsInJail = 0;
+                } else {
+                    turnsInJail += 1;
+                }
             }
 
         }while(doubles && nDoubles < 3);

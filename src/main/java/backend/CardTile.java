@@ -21,7 +21,7 @@ public class CardTile extends Tile{
      */
     @Override
     public void doAction(Player player, Board board) {
-        int cardID = (int) (Math.random()*16) + 1;
+        int cardID = (int) (Math.random()*16);
         if(this.name == "Chance"){
             Card[] chanceCards = board.getChanceCards();
             System.out.println(chanceCards[cardID]);

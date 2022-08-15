@@ -46,49 +46,49 @@ public class Board {
         TileFactory tileFactory = new TileFactory();
 
         //Factory calls for all 40 tiles
-        tiles[0] = tileFactory.getTile("StartTile", 0, "GO", null, null);
-        tiles[1] = tileFactory.getTile("Property", 1, "Mediterranean Avenue", Property.Color.BROWN, 60);
-        tiles[2] = tileFactory.getTile("CardTile", 2, "Community Chest", null, null);
-        tiles[3] = tileFactory.getTile("Property", 3, "Baltic Avenue", Property.Color.BROWN, 60);
-        tiles[4] = tileFactory.getTile("TaxTile", 4, "Income Tax", null, 200);
-        tiles[5] = tileFactory.getTile("Railroad", 5, "Reading backend.Railroad", null, 200);
-        tiles[6] = tileFactory.getTile("Property", 6, "Oriental Avenue", Property.Color.LIGHTBLUE, 100);
-        tiles[7] = tileFactory.getTile("CardTile", 7, "Chance", null, null);
-        tiles[8] = tileFactory.getTile("Property", 8, "Vermont Avenue", Property.Color.LIGHTBLUE, 100);
-        tiles[9] = tileFactory.getTile("Property", 9, "Connecticut Avenue", Property.Color.LIGHTBLUE, 120);
-        tiles[10] = tileFactory.getTile("JailTile", 10, "Jail", null, null);
+        tiles[0] = tileFactory.getTile("StartTile", 0, "GO", null, null, null, null, null);
+        tiles[1] = tileFactory.getTile("Property", 1, "Mediterranean Avenue", Property.Color.BROWN, 60, 2, 10, 250);
+        tiles[2] = tileFactory.getTile("CardTile", 2, "Community Chest", null, null, null, null, null);
+        tiles[3] = tileFactory.getTile("Property", 3, "Baltic Avenue", Property.Color.BROWN, 60, 4, 20, 450);
+        tiles[4] = tileFactory.getTile("TaxTile", 4, "Income Tax", null, 200, null, null, null);
+        tiles[5] = tileFactory.getTile("Railroad", 5, "Reading backend.Railroad", null, 200, null, null, null);
+        tiles[6] = tileFactory.getTile("Property", 6, "Oriental Avenue", Property.Color.LIGHTBLUE, 100, 6, 30, 550);
+        tiles[7] = tileFactory.getTile("CardTile", 7, "Chance", null, null, null, null, null);
+        tiles[8] = tileFactory.getTile("Property", 8, "Vermont Avenue", Property.Color.LIGHTBLUE, 100, 6, 30, 550);
+        tiles[9] = tileFactory.getTile("Property", 9, "Connecticut Avenue", Property.Color.LIGHTBLUE, 120, 8, 40, 600);
+        tiles[10] = tileFactory.getTile("JailTile", 10, "Jail", null, null, null, null, null);
 
-        tiles[11] = tileFactory.getTile("Property", 11, "St. Charles Place", Property.Color.PINK, 140);
-        tiles[12] = tileFactory.getTile("Utility", 12, "Electric Company", null, 150);
-        tiles[13] = tileFactory.getTile("Property", 13, "States Avenue", Property.Color.PINK, 140);
-        tiles[14] = tileFactory.getTile("Property", 14, "Virginia Avenue", Property.Color.PINK, 160);
-        tiles[15] = tileFactory.getTile("Railroad", 15, "Pennsylvania backend.Railroad", null, 200);
-        tiles[16] = tileFactory.getTile("Property", 16, "St. James Place", Property.Color.ORANGE, 180);
-        tiles[17] = tileFactory.getTile("CardTile", 17, "Community Chest", null, null);
-        tiles[18] = tileFactory.getTile("Property", 18, "Tennessee Avenue", Property.Color.ORANGE, 180);
-        tiles[19] = tileFactory.getTile("Property", 19, "New York Avenue", Property.Color.ORANGE, 200);
-        tiles[20] = tileFactory.getTile("FreeParkingTile", 20, "Free Parking", null, null);
+        tiles[11] = tileFactory.getTile("Property", 11, "St. Charles Place", Property.Color.PINK, 140, 10, 50, 750);
+        tiles[12] = tileFactory.getTile("Utility", 12, "Electric Company", null, 150, null, null, null);
+        tiles[13] = tileFactory.getTile("Property", 13, "States Avenue", Property.Color.PINK, 140,10, 50, 750);
+        tiles[14] = tileFactory.getTile("Property", 14, "Virginia Avenue", Property.Color.PINK, 160, 12, 60, 900);
+        tiles[15] = tileFactory.getTile("Railroad", 15, "Pennsylvania backend.Railroad", null, 200, null, null, null);
+        tiles[16] = tileFactory.getTile("Property", 16, "St. James Place", Property.Color.ORANGE, 180, 14, 70, 950);
+        tiles[17] = tileFactory.getTile("CardTile", 17, "Community Chest", null, null, null, null, null);
+        tiles[18] = tileFactory.getTile("Property", 18, "Tennessee Avenue", Property.Color.ORANGE, 180, 14, 70, 950);
+        tiles[19] = tileFactory.getTile("Property", 19, "New York Avenue", Property.Color.ORANGE, 200, 16, 80, 1000);
+        tiles[20] = tileFactory.getTile("FreeParkingTile", 20, "Free Parking", null, null, null, null, null);
 
-        tiles[21] = tileFactory.getTile("Property", 21, "Kentucky Avenue", Property.Color.RED, 220);
-        tiles[22] = tileFactory.getTile("CardTile", 22, "Chance", null, null);
-        tiles[23] = tileFactory.getTile("Property", 23, "Indiana Avenue", Property.Color.RED, 220);
-        tiles[24] = tileFactory.getTile("Property", 24, "Illinois Avenue", Property.Color.RED, 240);
-        tiles[25] = tileFactory.getTile("Railroad", 25, "B & O backend.Railroad", null, 200);
-        tiles[26] = tileFactory.getTile("Property", 26, "Atlantic Avenue", Property.Color.YELLOW, 260);
-        tiles[27] = tileFactory.getTile("Property", 27, "Ventnor Avenue", Property.Color.YELLOW, 260);
-        tiles[28] = tileFactory.getTile("Utility", 28, "Water Works", null, 150);
-        tiles[29] = tileFactory.getTile("Property", 29, "Marvin Gardens", Property.Color.YELLOW, 280);
-        tiles[30] = tileFactory.getTile("ToJailTile", 30, "Go to Jail", null, null);
+        tiles[21] = tileFactory.getTile("Property", 21, "Kentucky Avenue", Property.Color.RED, 220, 18, 90, 1050);
+        tiles[22] = tileFactory.getTile("CardTile", 22, "Chance", null, null, null, null, null);
+        tiles[23] = tileFactory.getTile("Property", 23, "Indiana Avenue", Property.Color.RED, 220, 18, 90, 1050);
+        tiles[24] = tileFactory.getTile("Property", 24, "Illinois Avenue", Property.Color.RED, 240, 20, 100, 1100);
+        tiles[25] = tileFactory.getTile("Railroad", 25, "B & O backend.Railroad", null, 200, null, null, null);
+        tiles[26] = tileFactory.getTile("Property", 26, "Atlantic Avenue", Property.Color.YELLOW, 260, 22, 110, 1150);
+        tiles[27] = tileFactory.getTile("Property", 27, "Ventnor Avenue", Property.Color.YELLOW, 260, 22, 110, 1150);
+        tiles[28] = tileFactory.getTile("Utility", 28, "Water Works", null, 150, null, null, null);
+        tiles[29] = tileFactory.getTile("Property", 29, "Marvin Gardens", Property.Color.YELLOW, 280, 24, 120, 1200);
+        tiles[30] = tileFactory.getTile("ToJailTile", 30, "Go to Jail", null, null, null, null, null);
 
-        tiles[31] = tileFactory.getTile("Property", 31, "Pacific Avenue", Property.Color.GREEN, 300);
-        tiles[32] = tileFactory.getTile("Property", 32, "North Carolina Avenue", Property.Color.GREEN, 300);
-        tiles[33] = tileFactory.getTile("CardTile", 33, "Community Chest", null, null);
-        tiles[34] = tileFactory.getTile("Property", 34, "Pennsylvania Avenue", Property.Color.GREEN, 320);
-        tiles[35] = tileFactory.getTile("Railroad", 35, "Short Line", null, 200);
-        tiles[36] = tileFactory.getTile("CardTile", 36, "Chance", null, null);
-        tiles[37] = tileFactory.getTile("Property", 37, "Park Place", Property.Color.DARKBLUE, 350);
-        tiles[38] = tileFactory.getTile("TaxTile", 38, "Luxury Tax", null, 100);
-        tiles[39] = tileFactory.getTile("Property", 39, "Boardwalk", Property.Color.DARKBLUE, 400);
+        tiles[31] = tileFactory.getTile("Property", 31, "Pacific Avenue", Property.Color.GREEN, 300, 26, 130, 1275);
+        tiles[32] = tileFactory.getTile("Property", 32, "North Carolina Avenue", Property.Color.GREEN, 300, 26, 130, 1275);
+        tiles[33] = tileFactory.getTile("CardTile", 33, "Community Chest", null, null, null, null, null);
+        tiles[34] = tileFactory.getTile("Property", 34, "Pennsylvania Avenue", Property.Color.GREEN, 320, 28, 150, 1400);
+        tiles[35] = tileFactory.getTile("Railroad", 35, "Short Line", null, 200, null, null, null);
+        tiles[36] = tileFactory.getTile("CardTile", 36, "Chance", null, null, null, null, null);
+        tiles[37] = tileFactory.getTile("Property", 37, "Park Place", Property.Color.DARKBLUE, 350, 35, 175, 1500);
+        tiles[38] = tileFactory.getTile("TaxTile", 38, "Luxury Tax", null, 100, null, null, null);
+        tiles[39] = tileFactory.getTile("Property", 39, "Boardwalk", Property.Color.DARKBLUE, 400, 50, 200, 2000);
 
     }
 
@@ -153,7 +153,7 @@ public class Board {
 
     public static void main(String args[]){
         Board board = new Board();
-        for(int i = 0; i<3; i++){
+        for(int i = 0; i<100; i++){
             board.players[0].takeTurn(board);
         }
     }
