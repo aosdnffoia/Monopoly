@@ -1,21 +1,15 @@
 package swing;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 class Popup extends JFrame implements ActionListener {
-
-    // java button
-    static JButton b;
-
-    // java frame
-    static JFrame f;
-
-    // popup menu
-    static JPopupMenu pm;
-
-    // JLabel
-    JLabel l;
+    private static JButton b;
+    private static JFrame f;
+    private static JPopupMenu pm;
+    private JLabel l;
+    private static JTextField textData;
 
     // default constructor
     Popup()
@@ -32,17 +26,23 @@ class Popup extends JFrame implements ActionListener {
         // hide the frame when close button is pressed
         f.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-        // create anew panel
+        // create a new panel
         JPanel p = new JPanel();
 
         // create an object of mouse class
         Popup pop = new Popup();
 
         // create a button
-        b = new JButton("click");
+        b = new JButton("Submit");
 
         // addActionListener
         b.addActionListener(pop);
+
+
+        // create textlabel
+        textData = new JTextField();
+
+        textData.setBounds(50,100, 200,30);
 
         // create a popup menu
         pm = new JPopupMenu("Message");
@@ -83,11 +83,13 @@ class Popup extends JFrame implements ActionListener {
         });
 
         // add button and label to frame
-        p.add(b);
         p.add(l);
+        p.add(textData);
+        p.add(b);
+        p.setLayout(new FlowLayout());
 
         f.add(p);
-        f.show();
+        f.setVisible(true);
     }
 
     // when the button is clicked
