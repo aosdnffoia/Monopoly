@@ -8,15 +8,17 @@ class Popup extends JFrame implements ActionListener {
     private static JButton b;
     private static JFrame f;
     private static JPopupMenu pm;
-    private JLabel l;
+    private static JLabel l;
+    private static JLabel l2;
     private static JTextField textData;
+    private int playerCount;
 
     // default constructor
     Popup()
     {
     }
 
-    public static void createMainMenu(String name){
+    public void createMainMenu(String name){
         // create a frame
         f = new JFrame("Welcome!");
 
@@ -29,6 +31,9 @@ class Popup extends JFrame implements ActionListener {
         // create a new panel
         JPanel p = new JPanel();
 
+        // create a new panel
+        JPanel p2 = new JPanel();
+
         // create an object of mouse class
         Popup pop = new Popup();
 
@@ -40,9 +45,11 @@ class Popup extends JFrame implements ActionListener {
 
 
         // create textlabel
-        textData = new JTextField();
+        textData = new JTextField(29);
 
-        textData.setBounds(50,100, 200,30);
+        // addActionListener
+        textData.addActionListener(pop);
+
 
         // create a popup menu
         pm = new JPopupMenu("Message");
@@ -53,7 +60,9 @@ class Popup extends JFrame implements ActionListener {
         JMenuItem m3 = new JMenuItem("Item3");
 
         // create a Jlabel
-        JLabel l = new JLabel("Welcome to "+name);
+        l = new JLabel("Welcome to "+name);
+
+        l2 = new JLabel("Please enter number of players (2-8)");
 
         // add menuitems to popup menu
         pm.add(m1);
@@ -82,11 +91,17 @@ class Popup extends JFrame implements ActionListener {
             }
         });
 
+        //Set layout for panel
+        p.setLayout(new GridLayout(4,1 ));
+
         // add button and label to frame
         p.add(l);
+        p.add(l2);
         p.add(textData);
         p.add(b);
-        p.setLayout(new FlowLayout());
+
+
+
 
         f.add(p);
         f.setVisible(true);
@@ -96,10 +111,38 @@ class Popup extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e)
     {
         String s = e.getActionCommand();
+        String userInput = textData.getText();
         if (s.equals("click")) {
 
             // add the popup to the frame
             pm.show(f, 200, 200);
+        } else if (s.equals("Submit")) {
+            if(isNumeric(userInput)) {
+                if (Integer.parseInt(userInput)>2 && Integer.parseInt(userInput)<8) {
+                    playerCount = Integer.parseInt(userInput);
+                    l2.setText("Thank you. You entered "+userInput);
+                    System.out.println("here");
+                }
+            }else{
+                l2.setText("Please enter valid number between 2 to 8. You entered "+userInput);
+            }
         }
+
+    }
+
+    private static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            Integer i = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public int getPlayerCount() {
+        return playerCount;
     }
 }
