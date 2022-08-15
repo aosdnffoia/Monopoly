@@ -25,8 +25,9 @@ class Game{
     public static void main(String args[]){
         Game game = new Game();
         game.init();
-        Board board = new Board();
-        Popup.createMainMenu(TITLE);
+        Popup setupPopup = new Popup();
+        setupPopup.createMainMenu(TITLE);
+        Board board = new Board(setupPopup.getPlayerCount());
     }
 
     /**

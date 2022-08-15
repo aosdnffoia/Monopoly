@@ -22,9 +22,10 @@ public class Board {
 
     /**
      * Default constructor for backend.Board
+     * @param playerCount
      */
-    public Board(){
-        generatePlayers(2);
+    public Board(int playerCount){
+        generatePlayers(playerCount);
     }
 
     /**
@@ -152,7 +153,7 @@ public class Board {
     }
 
     public static void main(String args[]){
-        Board board = new Board();
+        Board board = new Board(4);
         for(int i = 0; i<3; i++){
             board.players[0].takeTurn(board);
         }
