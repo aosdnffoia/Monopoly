@@ -8,11 +8,16 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
+import static java.awt.Color.*;
+
 class Game{
     private static final String TITLE = "Eskeet-poly";
-    private JFrame frame;
+    private static int numPlayers;
+    private static JLabel[] playerLabels;
+    private static JFrame frame;
     private JPanel panel;
-    private JLabel background;
+    private static JLabel background;
+    private static Board board;
     static JButton b;
 
     // java frame
@@ -23,11 +28,9 @@ class Game{
     JLabel l;
 
     public static void main(String args[]){
-        Game game = new Game();
-        game.init();
         Popup setupPopup = new Popup();
         setupPopup.createMainMenu(TITLE);
-        Board board = new Board(setupPopup.getPlayerCount());
+        board = new Board(numPlayers);
     }
 
     /**
@@ -40,7 +43,13 @@ class Game{
     /**
      * Initial Setup Needed for Gameplay
      */
-    private void init(){
+    public static void init(){
+        //Load number of players from user input
+        numPlayers=Popup.getPlayerCount();
+
+        //Create initial board
+        board = new Board(numPlayers);
+
 //        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -48,24 +57,43 @@ class Game{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) height, (int) height);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        JPanel mainPanel = new JPanel();
+        JPanel sidePanel = new JPanel();
+        mainPanel.setLayout(new FlowLayout());
+        //Create gridlayout for side panel with dice+player cards
+        GridLayout layout = new GridLayout(numPlayers+1,1);
+        //Vertical gap between grid tiles
+        layout.setVgap(8);
+        sidePanel.setLayout(layout);
 
         //Create background label and load image
         background = new JLabel();
-//        background.setBounds(0, 0, (int) height, (int) height);
         try {
-            Image img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/board.jpg")));
+            Image img = ImageIO.read(Objects.requireNonNull(Game.class.getResource("resources/board.jpg")));
             background.setIcon(new ImageIcon(img));
         } catch (IOException ex) {
         }
 
-        //Add Dice to panel
-        panel.add(new RollDicePanel(), BorderLayout.CENTER);
-        panel.add(background);
+        //Add Dice and players to side-panel
+        playerLabels=new JLabel[numPlayers];
+        sidePanel.add(new RollDicePanel());
+        for(int i=0;i<numPlayers;i++){
+            playerLabels[i] = new JLabel();
+            playerLabels[i].setText(board.getPlayer(i).getName() +" - $"+board.getPlayer(i).getMoney());
+            //Otherwise, the background is not painted, since the default of opaque is false for JLabel.
+            playerLabels[i].setOpaque(true);
+            //Random RGB COLOR
+            playerLabels[i].setBackground(new Color((int)(Math.random() * 0x1000000)));
+            sidePanel.add(playerLabels[i]);
+        }
+
+        //Add side panel and background to main panel
+        //TODO: Individual panels
+        mainPanel.add(sidePanel);
+        mainPanel.add(background);
 
         // Set the window to be visible as the default to be false
-        frame.add(panel);
+        frame.add(mainPanel);
         frame.pack();
         frame.setVisible(true);
     }

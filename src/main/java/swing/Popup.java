@@ -11,7 +11,7 @@ class Popup extends JFrame implements ActionListener {
     private static JLabel l;
     private static JLabel l2;
     private static JTextField textData;
-    private int playerCount;
+    private static int playerCount;
 
     // default constructor
     Popup()
@@ -100,9 +100,6 @@ class Popup extends JFrame implements ActionListener {
         p.add(textData);
         p.add(b);
 
-
-
-
         f.add(p);
         f.setVisible(true);
     }
@@ -117,15 +114,17 @@ class Popup extends JFrame implements ActionListener {
             // add the popup to the frame
             pm.show(f, 200, 200);
         } else if (s.equals("Submit")) {
-            if(isNumeric(userInput)) {
-                if (Integer.parseInt(userInput)>2 && Integer.parseInt(userInput)<8) {
+            //Ensure correctness of user input
+            if(isNumeric(userInput) && Integer.parseInt(userInput)>=2 && Integer.parseInt(userInput)<=8) {
                     playerCount = Integer.parseInt(userInput);
                     l2.setText("Thank you. You entered "+userInput);
-                    System.out.println("here");
-                }
+                    b.setText("Next");
             }else{
                 l2.setText("Please enter valid number between 2 to 8. You entered "+userInput);
             }
+        }else if (s.equals("Next")) {
+            f.setVisible(false);
+            Game.init();
         }
 
     }
@@ -142,7 +141,7 @@ class Popup extends JFrame implements ActionListener {
         return true;
     }
 
-    public int getPlayerCount() {
+    public static int getPlayerCount() {
         return playerCount;
     }
 }

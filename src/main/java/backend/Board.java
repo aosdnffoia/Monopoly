@@ -152,6 +152,10 @@ public class Board {
         return players;
     }
 
+    public Player getPlayer(int i) {
+        return players[i];
+    }
+
     public static void main(String args[]){
         Board board = new Board(4);
         for(int i = 0; i<3; i++){
