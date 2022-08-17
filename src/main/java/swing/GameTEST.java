@@ -54,7 +54,7 @@ class GameTEST {
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize((int) height, (int) height);
+        frame.setSize((int) (height*0.8), (int) (height*0.8));
 
         // Set the window to be visible as the default to be false
         frame.add(getMainPanel());
@@ -69,41 +69,30 @@ class GameTEST {
         GridBagConstraints c = new GridBagConstraints();
 
         for(int row=0; row<11; row++){
-            for(int col=0; col<12; col++){
+            for(int col=0; col<1; col++){
                 JLabel tile = new JLabel();
 
                 try {
                     Image img;
-                    img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource("resources/1 Mediterranean Avenue.jpg")));
+                    img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource("resources/0,0.jpg")));
                     if(getTileName(row, col) == ""){
                         //do nothing
                     }else{
-                        img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource(getTileName(row, col))));
+                        //img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource(getTileName(row, col))));
                         tile.setIcon(new ImageIcon(img));
 
                         c.fill = GridBagConstraints.HORIZONTAL;
-                        c.weightx = 0;
-                        c.weighty = 0;
+                        c.weightx = 1;
+                        c.weighty = 1;
                         c.gridx = col;
                         c.gridy = row;
 
-                        if(col==11){
+                        if(col==10){
                             c.gridwidth = GridBagConstraints.REMAINDER;
                             boardLayout.setConstraints(tile, c);
                         }
                         main.add(tile, c);
                     }
-                    /*tile.setIcon(new ImageIcon(img));
-
-                    c.fill = GridBagConstraints.HORIZONTAL;
-                    c.gridx = col;
-                    c.gridy = row;
-
-                    if(col==11){
-                        c.gridwidth = GridBagConstraints.REMAINDER;
-                        boardLayout.setConstraints(tile, c);
-                    }
-                    main.add(tile, c);*/
                 } catch (IOException ex) {
                 }
             }
@@ -113,36 +102,14 @@ class GameTEST {
     }
 
     public static String getTileName(int row, int col){
-        switch(col){
-            case 0: //case for first column displaying RollDicePanel and player info
-                return "";
-            case 1:
-                switch(row){
-                    case 0:
-                        return "resources/20 Free Parking.jpg";
-                    case 1:
-                        return "resources/19 New York Avenue.jpg";
-                    case 2:
-                        return "resources/18 Tennessee Avenue.jpg";
-                    case 3:
-                        return "resources/33 Community Chest.jpg";
-                    case 4:
-                        return "resources/16 St. James Place.jpg";
-                    case 5:
-                        return "resources/15 Pennsylvania Railroad.jpg";
-                    case 6:
-                        return "resources/14 Virginia Avenue.jpg";
-                    case 7:
-                        return "resources/13 States Avenue.jpg";
-                    case 8:
-                        return "resources/12 Electric Company.jpg";
-                    case 9:
-                        return "resources/11 St. Charles Place.jpg";
-                    case 10:
-                        return "resources/10 Jail.jpg";
-                }
-                return "resources/1 Mediterranean Avenue.jpg";
+        System.out.print("Row: " + row + " Col: " + col + "   ");
+        if((row >= 1 && row <= 9) && (col >= 1 && col <= 9)){
+            //do nothing
+            System.out.println("DO NOTHING");
+            return "";
+        }else{
+            System.out.println("resources/" + row + "," + col + ".png");
+            return "resources/" + row + "," + col + ".png";
         }
-        return "";
     }
 }
