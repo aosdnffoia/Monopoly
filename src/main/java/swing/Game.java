@@ -8,8 +8,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-import static java.awt.Color.*;
-
 class Game{
     private static final String TITLE = "Eskeet-poly";
     private static int numPlayers;
@@ -61,10 +59,6 @@ class Game{
         JPanel sidePanel = new JPanel();
         mainPanel.setLayout(new FlowLayout());
 
-        //GridLayout mainLayout = new GridLayout(1, 14);
-        //mainLayout.setVgap(2);
-        //mainPanel.setLayout(mainLayout);
-
         //Create gridlayout for side panel with dice+player cards
         GridLayout layout = new GridLayout(numPlayers+1,1);
         //Vertical gap between grid tiles
@@ -95,7 +89,6 @@ class Game{
         //Add side panel and background to main panel
         //TODO: Individual panels
         mainPanel.add(sidePanel);
-        mainPanel.add(new JLabel("1"));
         mainPanel.add(background);
 
         // Set the window to be visible as the default to be false
