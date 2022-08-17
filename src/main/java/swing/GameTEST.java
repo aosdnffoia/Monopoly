@@ -54,11 +54,12 @@ class GameTEST {
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize((int) (height*0.8), (int) (height*0.8));
+        //frame.setSize((int) (height*0.8), (int) (height*0.8));
 
         // Set the window to be visible as the default to be false
         frame.add(getMainPanel());
         frame.pack();
+        frame.setSize((int) (height*2), (int) (height*2));
         frame.setVisible(true);
     }
 
@@ -69,7 +70,7 @@ class GameTEST {
         GridBagConstraints c = new GridBagConstraints();
 
         for(int row=0; row<11; row++){
-            for(int col=0; col<1; col++){
+            for(int col=0; col<11; col++){
                 JLabel tile = new JLabel();
 
                 try {
@@ -78,12 +79,12 @@ class GameTEST {
                     if(getTileName(row, col) == ""){
                         //do nothing
                     }else{
-                        //img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource(getTileName(row, col))));
+                        img = ImageIO.read(Objects.requireNonNull(GameTEST.class.getResource(getTileName(row, col))));
                         tile.setIcon(new ImageIcon(img));
 
                         c.fill = GridBagConstraints.HORIZONTAL;
-                        c.weightx = 1;
-                        c.weighty = 1;
+                        c.weightx = 0.1;
+                        c.weighty = 0.1;
                         c.gridx = col;
                         c.gridy = row;
 
@@ -108,8 +109,8 @@ class GameTEST {
             System.out.println("DO NOTHING");
             return "";
         }else{
-            System.out.println("resources/" + row + "," + col + ".png");
-            return "resources/" + row + "," + col + ".png";
+            System.out.println("resources/" + row + "," + col + ".jpg");
+            return "resources/" + row + "," + col + ".jpg";
         }
     }
 }
