@@ -126,6 +126,7 @@ class Popup extends JFrame implements ActionListener {
             f.setVisible(false);
             //Game.init();
             GameTEST.init();
+            //GameTEST2.init();
         }
 
     }
