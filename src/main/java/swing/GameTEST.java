@@ -55,17 +55,23 @@ class GameTEST {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JPanel mainPanel = new JPanel(new FlowLayout());
+        //JPanel mainPanel = new JPanel(new GridLayout(1, 2));
+        mainPanel.add(createSidePanel());
+        mainPanel.add(createCenterPanel(height));
+
         // Set the window to be visible as the default to be false
-        frame.add(createMainPanel());
+        //frame.add(createCenterPanel());
+        frame.add(mainPanel);
         frame.pack();
-        frame.setSize((int) (height*2), (int) (height*2));
+        frame.setSize((int) (height), (int) (height));
         frame.setVisible(true);
     }
 
-    public static JScrollPane createMainPanel(){
-        JPanel main = new JPanel();
+    public static JScrollPane createCenterPanel(double height){
+        JPanel center = new JPanel();
         GridBagLayout boardLayout = new GridBagLayout();
-        main.setLayout(boardLayout);
+        center.setLayout(boardLayout);
         GridBagConstraints c = new GridBagConstraints();
 
         for(int row=0; row<11; row++){
@@ -97,15 +103,20 @@ class GameTEST {
                         }
 
                         boardLayout.setConstraints(tile, c);
-                        main.add(tile, c);
+                        center.add(tile, c);
                     }
                 } catch (IOException ex) {
                 }
             }
         }
 
-        JScrollPane scrollPane = new JScrollPane(main);
-        main.add(createSidePanel());
+        JScrollPane scrollPane = new JScrollPane(center){
+            @Override
+            public Dimension getPreferredSize(){
+                return new Dimension((int) (height), (int) (height));
+            }
+        };
+        //center.add(createSidePanel());
         return scrollPane;
     }
 
