@@ -1,14 +1,15 @@
 package swing;
 
-import backend.*;
-import swing.dice.*;
+import backend.Board;
+import swing.dice.RollDicePanel;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-class Game{
+class Game {
     private static final String TITLE = "Eskeet-poly";
     private static int numPlayers;
     private static JLabel[] playerLabels;
@@ -53,11 +54,74 @@ class Game{
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize((int) height, (int) height);
 
-        JPanel mainPanel = new JPanel();
+        JPanel mainPanel = new JPanel(new FlowLayout());
+        //JPanel mainPanel = new JPanel(new GridLayout(1, 2));
+        mainPanel.add(createSidePanel());
+        mainPanel.add(createCenterPanel(height));
+
+        // Set the window to be visible as the default to be false
+        //frame.add(createCenterPanel());
+        frame.add(mainPanel);
+        frame.pack();
+        frame.setSize((int) (height), (int) (height));
+        frame.setVisible(true);
+    }
+
+    public static JScrollPane createCenterPanel(double height){
+        JPanel center = new JPanel();
+        GridBagLayout boardLayout = new GridBagLayout();
+        center.setLayout(boardLayout);
+        GridBagConstraints c = new GridBagConstraints();
+
+        for(int row=0; row<11; row++){
+            for(int col=0; col<11; col++){
+                JLabel tile = new JLabel();
+
+                try {
+                    Image img;
+                    img = ImageIO.read(Objects.requireNonNull(Game.class.getResource("resources/0,0.jpg")));
+                    if(getTileName(row, col) == ""){
+                        //do nothing
+                    }else{
+                        img = ImageIO.read(Objects.requireNonNull(Game.class.getResource(getTileName(row, col))));
+                        tile.setIcon(new ImageIcon(img));
+
+                        if((row >= 1 && row <= 9) && (col >= 1 && col <= 9)){
+                            c.ipadx = 0;
+                            c.ipady = 0;
+                        } else{
+                            c.ipadx = 1;
+                            c.ipady = 1;
+                        }
+                        c.fill = GridBagConstraints.BOTH;
+                        c.gridx = col;
+                        c.gridy = row;
+
+                        if(col==10){
+                            c.gridwidth = GridBagConstraints.REMAINDER;
+                        }
+
+                        boardLayout.setConstraints(tile, c);
+                        center.add(tile, c);
+                    }
+                } catch (IOException ex) {
+                }
+            }
+        }
+
+        JScrollPane scrollPane = new JScrollPane(center){
+            @Override
+            public Dimension getPreferredSize(){
+                return new Dimension((int) (height), (int) (height));
+            }
+        };
+        //center.add(createSidePanel());
+        return scrollPane;
+    }
+
+    private static JPanel createSidePanel(){
         JPanel sidePanel = new JPanel();
-        mainPanel.setLayout(new FlowLayout());
 
         //Create gridlayout for side panel with dice+player cards
         GridLayout layout = new GridLayout(numPlayers+1,1);
@@ -65,20 +129,11 @@ class Game{
         layout.setVgap(8);
         sidePanel.setLayout(layout);
 
-        //Create background label and load image
-        background = new JLabel();
-        try {
-            Image img = ImageIO.read(Objects.requireNonNull(Game.class.getResource("resources/board.jpg")));
-            background.setIcon(new ImageIcon(img));
-        } catch (IOException ex) {
-        }
-
-        //Add Dice and players to side-panel
         playerLabels=new JLabel[numPlayers];
         sidePanel.add(new RollDicePanel());
         for(int i=0;i<numPlayers;i++){
             playerLabels[i] = new JLabel();
-            playerLabels[i].setText(board.getPlayer(i).getName() +" - $"+board.getPlayer(i).getMoney());
+            playerLabels[i].setText("<html>"+board.getPlayer(i).getName() +" - $"+board.getPlayer(i).getMoney()+"<br>Current Location: "+board.getTile(board.getPlayer(i).getIndex()).getName()+"</html>");
             //Otherwise, the background is not painted, since the default of opaque is false for JLabel.
             playerLabels[i].setOpaque(true);
             //Random RGB COLOR
@@ -86,15 +141,16 @@ class Game{
             sidePanel.add(playerLabels[i]);
         }
 
-        //Add side panel and background to main panel
-        //TODO: Individual panels
-        mainPanel.add(sidePanel);
-        mainPanel.add(background);
-
-        // Set the window to be visible as the default to be false
-        frame.add(mainPanel);
-        frame.pack();
-        frame.setVisible(true);
+        return sidePanel;
     }
 
+    public static String getTileName(int row, int col){
+        System.out.print("Row: " + row + " Col: " + col + "   ");
+        if((row >= 1 && row <= 9) && (col >= 1 && col <= 9)){
+            return "resources/background.jpg";
+        }else{
+            System.out.println("resources/" + row + "," + col + ".jpg");
+            return "resources/" + row + "," + col + ".jpg";
+        }
+    }
 }

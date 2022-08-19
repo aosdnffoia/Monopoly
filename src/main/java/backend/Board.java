@@ -162,7 +162,7 @@ public class Board {
             //board.players[0].takeTurn(board);
         }
         for(int i = 0; i<40; i++){
-            System.out.println(tiles[i]);
+            //System.out.println(tiles[i]);
         }
     }
 }
