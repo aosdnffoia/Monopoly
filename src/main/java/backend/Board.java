@@ -165,4 +165,12 @@ public class Board {
             //System.out.println(tiles[i]);
         }
     }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 }

@@ -45,6 +45,11 @@ public class RollDicePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             myLeftDie.roll();
             myRightDie.roll();
+//            System.out.println(myLeftDie.getValue()+myRightDie.getValue());
         }
+    }
+
+    public int total(){
+        return myLeftDie.getValue()+ myRightDie.getValue();
     }
 }

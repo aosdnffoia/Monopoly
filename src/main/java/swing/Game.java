@@ -1,6 +1,7 @@
 package swing;
 
 import backend.Board;
+import backend.Player;
 import swing.dice.RollDicePanel;
 
 import javax.imageio.ImageIO;
@@ -17,6 +18,8 @@ class Game {
     private JPanel panel;
     private static JLabel background;
     private static Board board;
+    private static RollDicePanel rollDicePanel;
+    private static Player currentPlayer;
     static JButton b;
 
     // java frame
@@ -49,7 +52,7 @@ class Game {
         //Create initial board
         board = new Board(numPlayers);
 
-//        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
         frame = new JFrame();
@@ -64,11 +67,11 @@ class Game {
         //frame.add(createCenterPanel());
         frame.add(mainPanel);
         frame.pack();
-        frame.setSize((int) (height), (int) (height));
+        frame.setSize((int) (width), (int) (height));
         frame.setVisible(true);
     }
 
-    public static JScrollPane createCenterPanel(double height){
+    private static JScrollPane createCenterPanel(double height){
         JPanel center = new JPanel();
         GridBagLayout boardLayout = new GridBagLayout();
         center.setLayout(boardLayout);
@@ -130,11 +133,12 @@ class Game {
         sidePanel.setLayout(layout);
 
         playerLabels=new JLabel[numPlayers];
-        sidePanel.add(new RollDicePanel());
+        rollDicePanel=new RollDicePanel();
+        sidePanel.add(rollDicePanel);
         for(int i=0;i<numPlayers;i++){
             playerLabels[i] = new JLabel();
             playerLabels[i].setText("<html>"+board.getPlayer(i).getName() +" - $"+board.getPlayer(i).getMoney()+"<br>Current Location: "+board.getTile(board.getPlayer(i).getIndex()).getName()+"</html>");
-            //Otherwise, the background is not painted, since the default of opaque is false for JLabel.
+            //Need to set opacity, the background is not painted, since the default of opaque is false for JLabel.
             playerLabels[i].setOpaque(true);
             //Random RGB COLOR
             playerLabels[i].setBackground(new Color((int)(Math.random() * 0x1000000)));
@@ -152,5 +156,9 @@ class Game {
             System.out.println("resources/" + row + "," + col + ".jpg");
             return "resources/" + row + "," + col + ".jpg";
         }
+    }
+
+    private void takeTurn(){
+        currentPlayer = board.getPlayer(0);
     }
 }
